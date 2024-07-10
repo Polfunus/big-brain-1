@@ -5,6 +5,7 @@ import { Id } from "@/convex/_generated/dataModel";
 import { cn } from "@/lib/utils";
 import { useQuery } from "convex/react";
 import { QuestionForm } from "./question-form";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function ChatPanel({
   documentId,
@@ -14,25 +15,62 @@ export default function ChatPanel({
   const chats = useQuery(api.chats.getChatsForDocument, { documentId });
 
   return (
-    <div className="dark:bg-gray-900 bg-slate-100 flex flex-col gap-2 p-6 rounded-xl">
-      <div className="h-[350px] overflow-y-auto space-y-3">
-        <div className="dark:bg-slate-950 rounded p-3">
-          AI: Ask any question using AI about this document below:
-        </div>
-        {chats?.map((chat) => (
-          <div
-            className={cn(
-              {
-                "dark:bg-slate-800 bg-slate-200": chat.isHuman,
-                "dark:bg-slate-950 bg-slate-300": !chat.isHuman,
-                "text-right": chat.isHuman,
-              },
-              "rounded p-4 whitespace-pre-line"
-            )}
-          >
-            {chat.isHuman ? "YOU" : "AI"}: {chat.text}
+    <div className="bg-slate-100 dark:bg-gray-900  flex flex-col gap-2 p-4 rounded-xl">
+      <div className="min-h-[500px] h-[65vh] overflow-y-auto space-y-3">
+        <div className="flex flex-col gap-1 p-2">
+          <div className="flex flex-col gap-1">
+            <span className="text-sm font-bold">
+              AI
+            </span>
+            <div className="border bg-slate-300 dark:bg-slate-900 p-2 rounded-lg rounded-tl-none whitespace-pre-line w-fit">
+              Hi there! Ask me anything about this document.
+            </div>
           </div>
-        ))}
+          {!chats && (
+            <div>
+              <div className="flex flex-col gap-1 items-end">
+                <Skeleton className="w-20 h-4" />
+                <Skeleton className="w-1/3 h-12" />
+              </div>
+              <div className="flex flex-col gap-1">
+                <Skeleton className="w-20 h-4" />
+                <Skeleton className="w-1/3 h-24" />
+              </div>
+              <div className="flex flex-col gap-1 items-end">
+                <Skeleton className="w-20 h-4" />
+                <Skeleton className="w-1/3 h-12" />
+              </div>
+              <div className="flex flex-col gap-1">
+                <Skeleton className="w-20 h-4" />
+                <Skeleton className="w-1/3 h-24" />
+              </div>
+            </div>
+          )}
+          {chats?.map((chat) => (
+            <div className="w-full">
+              {chat.isHuman ? (
+                <div className="flex flex-col gap-1 items-end">
+                  <span className="text-sm font-bold self-end">
+                    You
+                  </span>
+                  <div className="border bg-slate-200 dark:bg-slate-700 p-2 rounded-lg rounded-tl-none whitespace-pre-line w-fit">
+                    {chat.text}
+                  </div>
+                </div>
+              ) : (
+                <div className="flex flex-col gap-1">
+                  <span className="text-sm font-bold">
+                    AI
+                  </span>
+                  <div className="border bg-slate-300 dark:bg-slate-900 p-2 rounded-lg rounded-tl-none whitespace-pre-line w-fit">
+                    {chat.text}
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
       </div>
 
       <div className="flex gap-1">

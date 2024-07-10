@@ -1,8 +1,20 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
-import { SignInButton } from "@clerk/nextjs";
+import { SignInButton, useAuth } from "@clerk/nextjs";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function LandingPage() {
+
+  const { userId } = useAuth();
+  const router = useRouter();
+
+  if (userId) {
+    //Redirect to dashboard
+    router.push("/dashboard/documents");
+  }
+
   return (
     <div className="bg-slate-200 dark:bg-slate-950 h-screen">
       <div className="relative isolate px-6 pt-14 lg:px-8">

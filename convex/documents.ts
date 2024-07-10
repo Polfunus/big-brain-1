@@ -234,6 +234,31 @@ export const updateDocumentDescription = internalMutation({
   },
 });
 
+const motivtypen = `
+The 4 types of motivation
+
+•Type 1 - profit and economic orientation
+
+The customer is price-conscious and compares with the prices of competitors. He pays attention to price and performance, promotions, flat rates, additional services, etc. He wants to know what he gets for his money.
+
+
+•Type 2 - prestige-oriented
+
+The effect on the outside is important to him, the enhancement of his person or his company, his department. This customer likes to be in the spotlight, the opinion of others is important to him. He prefers to pay more and get higher quality in return, he likes to adorn himself with the prize: "Wasn't cheap, but...". He is receptive to recommendations and likes to be a pioneer.
+
+
+•Type 3 - convenience-oriented
+
+He wants simple processing, no additional effort, no changes in care. He feels that a lot is taken off his hands. Everything goes his way and he has as little stress as possible. This customer likes to have others work for him, he is very nice and polite due to a high quality of relationship - you cannot or hardly say "no". He always causes extra work, which cannot always be billed. He avoids commitments and commitments.
+
+
+•Type 4 - security-oriented
+
+This customer wants to know everything in detail, pays attention to details and therefore needs a lot of information.
+
+Many explanations are necessary! This customer needs maximum security in conversation, so avoid sentences that begin with: "I think, I hope, expect, am not sure...". He loves certificates, test reports, studies, comparison values, etc. He causes extra work, finds it difficult to make decisions, because he doesn't want to make mistakes.
+`
+
 export const askQuestion = action({
   args: {
     question: v.string(),
@@ -264,14 +289,17 @@ export const askQuestion = action({
         messages: [
           {
             role: "system",
-            content: `Here is a text file: ${text}`,
+            content: `
+            Pls consider the following motivation types: ${motivtypen}
+            Here is a text file: ${text}
+            `,
           },
           {
             role: "user",
             content: `please answer this question: ${args.question}`,
           },
         ],
-        model: "gpt-3.5-turbo",
+        model: "gpt-4o",
       });
 
     await ctx.runMutation(internal.chats.createChatRecord, {
