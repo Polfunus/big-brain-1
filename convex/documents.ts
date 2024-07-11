@@ -196,11 +196,11 @@ export const generateDocumentDescription = internalAction({
         messages: [
           {
             role: "system",
-            content: `Here is a text file: ${text}`,
+            content: `Hier ist ein Text File: ${text}`,
           },
           {
             role: "user",
-            content: `please generate 1 sentence description for this document.`,
+            content: `bitte generiere eine Beschreibung für dieses Dokument in einem Satz. Der Satz muss in Deutsch geschrieben sein!`,
           },
         ],
         model: "gpt-4o",
