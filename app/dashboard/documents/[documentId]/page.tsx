@@ -50,9 +50,9 @@ export default function DocumentPage({
 
           <div className="flex gap-12">
             <Tabs defaultValue="document" className="w-full">
-              <TabsList className="mb-2">
-                <TabsTrigger value="document">Info</TabsTrigger>
-                <TabsTrigger value="chat">Chat</TabsTrigger>
+              <TabsList className="mb-2 h-fit">
+                <TabsTrigger className="text-md" value="document">Info</TabsTrigger>
+                <TabsTrigger className="text-md" value="chat">Chat</TabsTrigger>
               </TabsList>
 
               <TabsContent value="document">
@@ -63,11 +63,11 @@ export default function DocumentPage({
                       src={document.documentUrl}
                     />
                   )} */}
-                  <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+                  <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                     <Card className="flex flex-col">
                       <CardHeader>
                         <CardTitle>
-                          Anwendungsgebiete
+                          Anwendungs&shy;gebiete
                         </CardTitle>
                       </CardHeader>
                       <CardContent className="flex-1">
@@ -115,61 +115,73 @@ export default function DocumentPage({
                     <h2 className="text-2xl font-bold">
                       Hauptargumente für die 4 Motivtypen
                     </h2>
-                    <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+                    <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                       <Card className="flex flex-col">
                         <CardHeader>
                           <CardTitle>
-                            Typ 1: gewinn- & wirtschaftsorientiert
+                            Typ 1: gewinn- & wirtschafts&shy;orientiert
                           </CardTitle>
                         </CardHeader>
                         <CardContent>
                           <p className="italic">
-                            &quot;Erleada bietet eine kosteneffiziente Lösung zur Behandlung von fortgeschrittenem Prostatakrebs. Trotz seines wettbewerbsfähigen Preises gewährleistet es durch umfassende klinische Studien nachgewiesene Sicherheit und Wirksamkeit. Die tägliche Einnahme von nur wenigen Tabletten reduziert zusätzliche medizinische Kosten durch einfache Handhabung und minimiert potenziell teure Nebenwirkungen und Komplikationen. Profitieren Sie von einem attraktiven Preis-Leistungs-Verhältnis ohne Kompromisse bei der Qualität.&quot;
+                            &quot;Erleada bietet ein hervorragendes Preis-Leistungs-Verhältnis für die Behandlung von Prostatakrebs. Mit einer standardisierten Dosierung, die keine Anpassung bei älteren Patienten erfordert, und der Möglichkeit der Einnahme unabhängig von Mahlzeiten, sparen Ihre Patienten Zeit und Kosten. Das Arzneimittel ist zudem effizient in der Anwendung und erfordert keine komplexen Begleittherapien, was Ihre Praxisabläufe optimiert und die Behandlungsqualität zu einem wettbewerbsfähigen Preis gewährleistet.&quot;
                           </p>
                         </CardContent>
                         <CardFooter>
+                          <p className="font-bold">
+                            Erleada bietet ein hervorragendes Preis-Leistungs-Verhältnis und umfassende Sicherheitstests, die durch Zertifikate und Studien belegt sind, was Ihnen hilft, kosteneffektiv und sicher zu behandeln.
+                          </p>
                         </CardFooter>
                       </Card>
                       <Card className="flex flex-col">
                         <CardHeader>
                           <CardTitle>
-                            Typ 2: prestigeorientiert
+                            Typ 2: prestige&shy;orientiert
                           </CardTitle>
                         </CardHeader>
                         <CardContent>
                           <p className="italic">
-                            &quot;Unsere Erleada 60 mg Filmtabletten bieten Ihnen ein hochwertiges und sicheres Produkt, das in renommierten klinischen Studien seine Wirksamkeit bewiesen hat. Mit der höchsten Qualität in der Branche wird Ihr Unternehmen stets als Vorreiter in der medizinischen Versorgung wahrgenommen. Diese Investition wird Ihre Reputation erheblich steigern und Sie in den Augen Ihrer Kollegen und Kunden als fortschrittlich und sorgfältig positionieren.&quot;
+                            &quot;Erleada bietet Ihrem Prestige als führender Urologe/Onkologe einen zusätzlichen Schub. Dieses Premium-Medikament, das für seine Wirksamkeit bei Prostatakrebs bekannt ist, repräsentiert höchste medizinische Qualität und Innovation. Entscheiden Sie sich für Erleada und setzen Sie ein Statement - für das Wohl Ihrer Patienten und für Ihre Reputation in der medizinischen Gemeinschaft. Mit seiner dokumentierten Wirksamkeit und Sicherheit hebt es Ihre Praxis auf ein neues Niveau.&quot;
                           </p>
                         </CardContent>
                         <CardFooter>
+                          <p className="font-bold">
+                            Erleada bietet höchste Qualität und innovative Behandlungsmöglichkeiten, die durch klinische Studien gestützt werden, sodass Sie sich als Vorreiter in der modernen Onkologie positionieren können.
+                          </p>
                         </CardFooter>
                       </Card>
                       <Card className="flex flex-col">
                         <CardHeader>
                           <CardTitle>
-                            Typ 3: bequemlichkeitsorientiert
+                            Typ 3: bequemlichkeits&shy;orientiert
                           </CardTitle>
                         </CardHeader>
                         <CardContent>
                           <p className="italic">
-                            &quot;Erleada bietet eine unkomplizierte Behandlung für Prostatakrebs, die Ihnen den Alltag erleichtert. Mit der bequemen einmal täglichen Einnahme müssen Sie sich keine Sorgen um komplexe Medikationspläne machen. Unser umfassender Service steht Ihnen zur Verfügung, um sicherzustellen, dass alle Ihre Fragen schnell und effizient beantwortet werden. Genießen Sie sorgenfreie Behandlung bei minimalem Aufwand.&quot;
+                            &quot;Mit Erleada erhalten Sie eine unkomplizierte und stressfreie Behandlung Ihrer Prostatakrebspatienten. Die einfache, einmal tägliche Einnahme und die gute Handhabung sorgen dafür, dass Therapieunterbrechungen und zusätzliche Maßnahmen auf ein Minimum reduziert werden. Die umfassende Unterstützung durch uns als Hersteller stellt sicher, dass Sie sich voll und ganz auf Ihre Patienten konzentrieren können, ohne zusätzliche Belastungen.&quot;
                           </p>
                         </CardContent>
                         <CardFooter>
+                          <p className="font-bold">
+                            Erleada bietet eine einfache, einmal tägliche Einnahme, die ohne besondere diätetische Einschränkungen erfolgt, wodurch die Behandlung mit minimalem Aufwand und maximalem Komfort in den Alltag integriert werden kann.
+                          </p>
                         </CardFooter>
                       </Card>
                       <Card className="flex flex-col">
                         <CardHeader>
                           <CardTitle>
-                            Typ 4: sicherheitsorientiert
+                            Typ 4: sicherheits&shy;orientiert
                           </CardTitle>
                         </CardHeader>
                         <CardContent>
                           <p className="italic">
-                            &quot;Erleada wurde in mehreren klinischen Studien umfassend getestet, darunter die Studien SPARTAN und TITAN, die sowohl die Wirksamkeit als auch das Sicherheitsprofil des Medikaments belegen. Darüber hinaus unterliegt Erleada einer zusätzlichen Überwachung, um neue Erkenntnisse über die Sicherheit schnell zu identifizieren. Angehörige von Gesundheitsberufen sind aufgefordert, jeden Verdachtsfall einer Nebenwirkung zu melden, was eine kontinuierliche Sicherheitsbeurteilung ermöglicht. Diese rigorosen Überwachungs- und Berichtsmechanismen bieten Ihnen die maximale Sicherheit hinsichtlich der Anwendung dieses Medikaments.&quot;
+                            &quot;Erleada hat sich in umfassenden klinischen Studien als hochwirksam erwiesen und bietet detaillierte Sicherheitsberichte, Zertifikate und Vergleichswerte. Jede Tablette durchlief strenge Qualitätskontrollen, um maximale Sicherheit und Wirksamkeit zu gewährleisten. Lassen Sie sich von den umfangreichen Studien und Testberichten überzeugen, um Ihren Patienten die bestmögliche, sicher geprüfte Behandlung zu bieten.&quot;
                           </p>
                         </CardContent>
                         <CardFooter>
+                          <p className="font-bold">
+                            Erleada bietet durch umfassende klinische Studien, detaillierte Testberichte und zahlreiche Sicherheitszertifikate maximale Sicherheit und Zuverlässigkeit für die Behandlung von Prostatakrebs.
+                          </p>
                         </CardFooter>
                       </Card>
                     </div>

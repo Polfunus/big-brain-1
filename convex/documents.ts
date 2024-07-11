@@ -203,7 +203,7 @@ export const generateDocumentDescription = internalAction({
             content: `please generate 1 sentence description for this document.`,
           },
         ],
-        model: "gpt-3.5-turbo",
+        model: "gpt-4o",
       });
 
     const description =
@@ -290,7 +290,8 @@ export const askQuestion = action({
           {
             role: "system",
             content: `
-            Pls consider the following motivation types: ${motivtypen}
+            Pls consider the following motivation types: ${motivtypen}.
+            Keep in mind that the customer is a urologist or oncologist.
             Here is a text file: ${text}
             `,
           },

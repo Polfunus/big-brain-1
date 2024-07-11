@@ -15,14 +15,14 @@ export default function ChatPanel({
   const chats = useQuery(api.chats.getChatsForDocument, { documentId });
 
   return (
-    <div className="bg-slate-100 dark:bg-gray-900  flex flex-col gap-2 p-4 rounded-xl">
+    <div className=" border dark:bg-slate-800  flex flex-col gap-2 rounded-xl">
       <div className="min-h-[500px] h-[65vh] overflow-y-auto space-y-3">
-        <div className="flex flex-col gap-1 p-2">
+        <div className="flex flex-col gap-1 p-4">
           <div className="flex flex-col gap-1">
             <span className="text-sm font-bold">
               AI
             </span>
-            <div className="border bg-slate-300 dark:bg-slate-900 p-2 rounded-lg rounded-tl-none whitespace-pre-line w-fit">
+            <div className="border bg-slate-300 dark:bg-slate-900 p-2 rounded-lg rounded-tl-none whitespace-pre-line w-fit shadow-md">
               Hi there! Ask me anything about this document.
             </div>
           </div>
@@ -47,13 +47,13 @@ export default function ChatPanel({
             </div>
           )}
           {chats?.map((chat) => (
-            <div className="w-full">
+            <div className="w-full" key={chat._id}>
               {chat.isHuman ? (
                 <div className="flex flex-col gap-1 items-end">
                   <span className="text-sm font-bold self-end">
                     You
                   </span>
-                  <div className="border bg-slate-200 dark:bg-slate-700 p-2 rounded-lg rounded-tl-none whitespace-pre-line w-fit">
+                  <div className="border bg-slate-200 dark:bg-slate-700 p-2 rounded-lg rounded-tl-none whitespace-pre-line w-fit shadow-md">
                     {chat.text}
                   </div>
                 </div>
@@ -62,7 +62,7 @@ export default function ChatPanel({
                   <span className="text-sm font-bold">
                     AI
                   </span>
-                  <div className="border bg-slate-300 dark:bg-slate-900 p-2 rounded-lg rounded-tl-none whitespace-pre-line w-fit">
+                  <div className="border bg-slate-300 dark:bg-slate-900 p-2 rounded-lg rounded-tl-none whitespace-pre-line w-fit shadow-md">
                     {chat.text}
                   </div>
                 </div>

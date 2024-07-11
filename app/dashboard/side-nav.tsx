@@ -9,14 +9,14 @@ export default function SideNav() {
   const pathname = usePathname();
 
   return (
-    <nav>
+    <nav className="w-[150px] md:w-[200px]">
       <ul className="space-y-6">
         <li>
           <Link
             className={cn(
-              "font-light flex gap-2 items-center text-xl hover:text-cyan-400 dark:hover:text-cyan-100",
+              "font-light flex gap-2 items-center text-lg hover:text-primary/75 md:text-xl",
               {
-                "text-cyan-300": pathname.endsWith("/search"),
+                "text-primary": pathname.endsWith("/search"),
               }
             )}
             href="/dashboard/search"
@@ -28,9 +28,9 @@ export default function SideNav() {
         <li>
           <Link
             className={cn(
-              "font-light flex gap-2 items-center text-xl hover:text-cyan-400 dark:hover:text-cyan-100",
+              "font-light flex gap-2 items-center text-lg hover:text-primary/75 md:text-xl",
               {
-                "text-cyan-300": pathname.endsWith("/documents"),
+                "text-primary": pathname.endsWith("/documents"),
               }
             )}
             href="/dashboard/documents"
@@ -42,9 +42,9 @@ export default function SideNav() {
         <li>
           <Link
             className={cn(
-              "font-light flex gap-2 items-center text-xl hover:text-cyan-400 dark:hover:text-cyan-100",
+              "font-light flex gap-2 items-center text-lg hover:text-primary/75 md:text-xl",
               {
-                "text-cyan-300": pathname.endsWith("/notes"),
+                "text-primary": pathname.endsWith("/notes"),
               }
             )}
             href="/dashboard/notes"

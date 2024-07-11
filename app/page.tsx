@@ -43,7 +43,7 @@ export default function LandingPage() {
               Take Control of you Team Documentation
             </h1>
             <p className="dark:text-gray-100 mt-6 text-lg leading-8 text-gray-600">
-              BigBrain acts as your team's second brain, storing all your docs
+              BigBrain acts as your team&apos;s second brain, storing all your docs
               and allowing easy vector search.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">

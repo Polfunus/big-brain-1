@@ -16,6 +16,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { LoadingButton } from "@/components/loading-button";
+import { useState } from "react";
 
 const formSchema = z.object({
   text: z.string().min(1).max(250),
@@ -23,6 +24,7 @@ const formSchema = z.object({
 
 export function QuestionForm({ documentId }: { documentId: Id<"documents"> }) {
   const askQuestion = useAction(api.documents.askQuestion);
+
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
