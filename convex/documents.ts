@@ -297,7 +297,9 @@ export const askQuestion = action({
           },
           {
             role: "user",
-            content: `please answer this question: ${args.question}`,
+            content: `please answer this question: ${args.question}
+            in the language of the file.
+            `,
           },
         ],
         model: "gpt-4o",

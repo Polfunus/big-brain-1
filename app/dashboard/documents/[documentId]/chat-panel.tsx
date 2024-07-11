@@ -20,10 +20,10 @@ export default function ChatPanel({
         <div className="flex flex-col gap-1 p-4">
           <div className="flex flex-col gap-1">
             <span className="text-sm font-bold">
-              AI
+              KI
             </span>
             <div className="border bg-slate-300 dark:bg-slate-900 p-2 rounded-lg rounded-tl-none whitespace-pre-line w-fit shadow-md">
-              Hi there! Ask me anything about this document.
+              Hallo! Du kannst mir Fragen stellen, um mehr über das Dokument zu erfahren.
             </div>
           </div>
           {!chats && (
@@ -51,7 +51,7 @@ export default function ChatPanel({
               {chat.isHuman ? (
                 <div className="flex flex-col gap-1 items-end">
                   <span className="text-sm font-bold self-end">
-                    You
+                    Du
                   </span>
                   <div className="border bg-slate-200 dark:bg-slate-700 p-2 rounded-lg rounded-tl-none whitespace-pre-line w-fit shadow-md">
                     {chat.text}
@@ -60,7 +60,7 @@ export default function ChatPanel({
               ) : (
                 <div className="flex flex-col gap-1">
                   <span className="text-sm font-bold">
-                    AI
+                    KI
                   </span>
                   <div className="border bg-slate-300 dark:bg-slate-900 p-2 rounded-lg rounded-tl-none whitespace-pre-line w-fit shadow-md">
                     {chat.text}
@@ -73,7 +73,7 @@ export default function ChatPanel({
 
       </div>
 
-      <div className="flex gap-1">
+      <div className="flex gap-1 p-2">
         <QuestionForm documentId={documentId} />
       </div>
     </div>

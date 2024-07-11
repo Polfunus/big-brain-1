@@ -21,7 +21,7 @@ export default function DocumentPage({
   });
 
   return (
-    <main className="space-y-8 w-full">
+    <main className="space-y-8 w-full pb-4">
       {!document && (
         <div className="space-y-8">
           <div>

@@ -28,7 +28,6 @@ export default function UploadDocumentButton() {
         <DialogHeader>
           <DialogTitle>Upload a Document</DialogTitle>
           <DialogDescription>
-            Upload a team document for you to search over in the future.
           </DialogDescription>
 
           <UploadDocumentForm onUpload={() => setIsOpen(false)} />

@@ -33,19 +33,15 @@ export default function LandingPage() {
         <div className="mx-auto max-w-2xl py-12">
           <div className="text-center">
             <Image
-              src="/logo.png"
+              src="/logo.jpg"
               width="200"
               height="200"
               alt="a woman holding a document"
               className="mx-auto rounded-2xl mb-4"
             />
             <h1 className="dark:text-gray-50 text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Take Control of you Team Documentation
+              Demo für das KI-Tool
             </h1>
-            <p className="dark:text-gray-100 mt-6 text-lg leading-8 text-gray-600">
-              BigBrain acts as your team&apos;s second brain, storing all your docs
-              and allowing easy vector search.
-            </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <SignInButton>
                 <Button className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">

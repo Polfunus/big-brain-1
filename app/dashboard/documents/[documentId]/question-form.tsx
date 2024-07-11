@@ -51,7 +51,7 @@ export function QuestionForm({ documentId }: { documentId: Id<"documents"> }) {
             <FormItem className="flex-1">
               <FormControl>
                 <Input
-                  placeholder="Ask any question over this document"
+                  placeholder="Frage stellen"
                   disabled={form.formState.isSubmitting}
                   {...field}
                 />
