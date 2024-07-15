@@ -9,9 +9,9 @@ export default function SideNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="w-[150px] md:w-[200px]">
+    <nav className="hidden w-[150px] md:w-[200px] md:block">
       <ul className="space-y-6">
-        <li>
+        {/* <li>
           <Link
             className={cn(
               "font-light flex gap-2 items-center text-lg hover:text-primary/75 md:text-xl",
@@ -24,7 +24,7 @@ export default function SideNav() {
             <Search />
             Search
           </Link>
-        </li>
+        </li> */}
         <li>
           <Link
             className={cn(
@@ -39,7 +39,7 @@ export default function SideNav() {
             Documents
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link
             className={cn(
               "font-light flex gap-2 items-center text-lg hover:text-primary/75 md:text-xl",
@@ -52,7 +52,7 @@ export default function SideNav() {
             <ClipboardPen />
             Notes
           </Link>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );

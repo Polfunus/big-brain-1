@@ -16,7 +16,7 @@ export function Header() {
             Demo
           </Link>
 
-          <nav className="flex items-center gap-8">
+          {/* <nav className="flex items-center gap-8">
             <OrganizationSwitcher />
 
             <Authenticated>
@@ -24,7 +24,7 @@ export function Header() {
                 Dashboard
               </Link>
             </Authenticated>
-          </nav>
+          </nav> */}
         </div>
 
         <div className="flex gap-4 items-center">
