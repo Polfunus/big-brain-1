@@ -174,6 +174,24 @@ export const createDocument = mutation({
         documentId,
       }
     );
+
+    await ctx.scheduler.runAfter(
+      0,
+      internal.documents.generateDocumentSummary,
+      {
+        fileId: args.fileId,
+        documentId,
+      }
+    );
+
+    await ctx.scheduler.runAfter(
+      0,
+      internal.documents.generateDocumentFeatures,
+      {
+        fileId: args.fileId,
+        documentId,
+      }
+    );
   },
 });
 
@@ -231,6 +249,197 @@ export const updateDocumentDescription = internalMutation({
       description: args.description,
       embedding: args.embedding,
     });
+  },
+});
+
+export const generateDocumentSummary = internalAction({
+  args: {
+    fileId: v.id("_storage"),
+    documentId: v.id("documents"),
+  },
+  async handler(ctx, args) {
+    const file = await ctx.storage.get(args.fileId);
+
+    if (!file) {
+      throw new ConvexError("File not found");
+    }
+
+    const text = await file.text();
+
+    const chatCompletion: OpenAI.Chat.Completions.ChatCompletion =
+      await openai.chat.completions.create({
+        messages: [
+          {
+            role: "system",
+            content: `Hier ist ein Text File: ${text}`,
+          },
+          {
+            role: "user",
+            content: `bitte generiere eine Zusammenfassung für dieses Dokument. (max. 80 Wörter) Der Satz muss in Deutsch geschrieben sein!`,
+          },
+        ],
+        model: "gpt-4o",
+      });
+
+    const summary = chatCompletion.choices[0].message.content ?? "could not generate a summary";
+
+    await ctx.runMutation(internal.documents.updateDocumentSummary, {
+      documentId: args.documentId,
+      summary,
+    });
+  },
+
+});
+
+export const updateDocumentSummary = internalMutation({
+  args: {
+    documentId: v.id("documents"),
+    summary: v.string(),
+  },
+  async handler(ctx, args) {
+    await ctx.db.patch(args.documentId, {
+      summary: args.summary,
+    });
+  },
+});
+
+export const generateDocumentFeatures = internalAction({
+  args: {
+    documentId: v.id("documents"),
+    fileId: v.id("_storage"),
+  },
+  async handler(ctx, args) {
+
+    const file = await ctx.storage.get(args.fileId);
+
+    if (!file) {
+      throw new ConvexError("File not found");
+    }
+
+    const text = await file.text();
+
+    const chatCompletion: OpenAI.Chat.Completions.ChatCompletion =
+      await openai.chat.completions.create({
+        messages: [
+          {
+            role: "system",
+            content: `Hier ist ein Text File: ${text}`,
+          },
+          {
+            role: "user",
+            content: `Was sind die Anwendungsgebiete des Produkts? (max. 50 Wörter)`,
+          },
+        ],
+        model: "gpt-4o",
+      });
+
+    const anwendungsGebiete = chatCompletion.choices[0].message.content ?? "could not generate features";
+
+
+    const chatCompletion2: OpenAI.Chat.Completions.ChatCompletion =
+      await openai.chat.completions.create({
+        messages: [
+          {
+            role: "system",
+            content: `Hier ist ein Text File: ${text}`,
+          },
+          {
+            role: "user",
+            content: `Was sind die Dosierungsempfehlungen des Produkts? (max. 50 Wörter)`,
+          },
+        ],
+        model: "gpt-4o",
+      });
+
+    const dosierung = chatCompletion2.choices[0].message.content ?? "could not generate features";
+
+
+    const chatCompletion3: OpenAI.Chat.Completions.ChatCompletion =
+      await openai.chat.completions.create({
+        messages: [
+          {
+            role: "system",
+            content: `Hier ist ein Text File: ${text}`,
+          },
+          {
+            role: "user",
+            content: `Was sind die Nebenwirkungen des Produkts? (max. 50 Wörter)`,
+          },
+        ],
+        model: "gpt-4o",
+      });
+
+    const nebenwirkungen = chatCompletion3.choices[0].message.content ?? "could not generate features";
+
+
+    const features = [anwendungsGebiete, dosierung, nebenwirkungen];
+
+
+
+    await ctx.runMutation(internal.documents.updateDocumentFeatures, {
+      documentId: args.documentId,
+      features,
+    });
+
+  }
+});
+
+export const updateDocumentFeatures = internalMutation({
+  args: {
+    documentId: v.id("documents"),
+    features: v.array(v.string()),
+  },
+  async handler(ctx, args) {
+    await ctx.db.patch(args.documentId, {
+      features: args.features,
+    });
+  },
+});
+
+export const updateDocumentFile = mutation({
+  args: {
+    documentId: v.id("documents"),
+    fileId: v.id("_storage"),
+  },
+  async handler(ctx, args) {
+    const accessObj = await hasAccessToDocument(ctx, args.documentId);
+
+    if (!accessObj) {
+      throw new ConvexError("You do not have access to this document");
+    }
+
+    await ctx.db.patch(args.documentId, {
+      fileId: args.fileId,
+    });
+
+    await ctx.scheduler.runAfter(
+      0,
+      internal.documents.generateDocumentDescription,
+      {
+        fileId: args.fileId,
+        documentId: args.documentId,
+      }
+    );
+
+    await ctx.scheduler.runAfter(
+      0,
+      internal.documents.generateDocumentSummary,
+      {
+        fileId: args.fileId,
+        documentId: args.documentId,
+      }
+    );
+
+    await ctx.scheduler.runAfter(
+      0,
+      internal.documents.generateDocumentFeatures,
+      {
+        fileId: args.fileId,
+        documentId: args.documentId,
+      }
+    );
+
+
   },
 });
 

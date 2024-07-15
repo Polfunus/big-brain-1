@@ -7,9 +7,9 @@ import ChatPanel from "./chat-panel";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Skeleton } from "@/components/ui/skeleton";
 import { DeleteDocumentButton } from "./delete-document-button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import UpdateDocumentButton from "../update-document-button";
+import { useState } from "react";
 
 export default function DocumentPage({
   params,
@@ -22,12 +22,26 @@ export default function DocumentPage({
     documentId: params.documentId,
   });
 
+  const [isUpdating, setIsUpdating] = useState(false);
+
+  const featureTitles = [
+    "Anwendungsgebiete",
+    "Dosierung",
+    "Nebenwirkungen",
+  ];
+
+
   return (
     <main className="space-y-8 w-full pb-4">
       {!document && (
         <div className="space-y-8">
           <div>
             <Skeleton className="h-[40px] w-[500px]" />
+          </div>
+          <div>
+            <div className="flex flex-col gap-1">
+              <Skeleton className="h-[100px] w-[500px]" />
+            </div>
           </div>
           <div className="flex gap-2">
             <Skeleton className="h-[40px] w-[80px]" />
@@ -42,12 +56,25 @@ export default function DocumentPage({
           <div className="flex justify-between items-start">
             <div className="flex flex-col gap-4 max-w-2xl">
               <h1 className="text-4xl font-bold">{document.title}</h1>
-              <p>
-                Erleada (Apalutamid) ist ein Medikament zur Behandlung von Prostatakrebs bei erwachsenen Männern. Es ist indiziert für nicht-metastasierten kastrationsresistenten Prostatakrebs und metastasierten hormonsensitiven Prostatakrebs. Erleada blockiert die Aktivität von Androgenen wie Testosteron, was das Wachstum und die Teilung von Krebszellen hemmt. Die empfohlene Dosierung beträgt 240 mg täglich (vier 60 mg Tabletten), die oral eingenommen werden. Einige häufige Nebenwirkungen sind Müdigkeit, Gelenkschmerzen, Hautausschlag, Bluthochdruck und Hitzewallungen.
-              </p>
+              <>
+                {!document.summary && (
+                  <div className="flex flex-col gap-2">
+                    <Skeleton className="h-[20px] w-[500px]" />
+                    <Skeleton className="h-[20px] w-[500px]" />
+                    <Skeleton className="h-[20px] w-[500px]" />
+                  </div>
+                )}
+
+                {document.summary && (
+                  <p className="text-lg">{document.summary}</p>
+                )}
+              </>
             </div>
 
-            <DeleteDocumentButton documentId={document._id} />
+            <div className="flex items-center gap-4">
+              <UpdateDocumentButton documentId={document._id} />
+              <DeleteDocumentButton documentId={document._id} />
+            </div>
           </div>
 
           <div className="flex gap-12">
@@ -66,52 +93,80 @@ export default function DocumentPage({
                     />
                   )} */}
                   <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                    <Card className="flex flex-col">
-                      <CardHeader>
-                        <CardTitle>
-                          Anwendungs&shy;gebiete
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent className="flex-1">
-                        <ul>
-                          <li>
-                            1. Zur Behandlung erwachsener Männer mit nicht-metastasiertem kastrationsresistentem Prostatakarzinom (nmCRPC), die ein hohes Risiko für die Entwicklung von Metastasen aufweisen.
-                          </li>
-                          <li>
-                            2. Zur Behandlung erwachsener Männer mit metastasiertem hormonsensitivem Prostatakarzinom (mHSPC) in Kombination mit Androgendeprivationstherapie (ADT).
-                          </li>
-                        </ul>
-                      </CardContent>
-                      <CardFooter>
-                        <button className="btn">mehr erfahren</button>
-                      </CardFooter>
-                    </Card>
-                    <Card className="flex flex-col">
-                      <CardHeader>
-                        <CardTitle>
-                          Dosierung
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent className="flex-1">
-                        Die empfohlene Dosierung von Erleada beträgt 240 mg (vier 60 mg Tabletten) einmal täglich oral. Die Tabletten sollen unzerteilt geschluckt werden, unabhängig von Mahlzeiten. Bei verpasster Dosis so bald wie möglich einnehmen, jedoch keine doppelte Dosis am nächsten Tag einnehmen.
-                      </CardContent>
-                      <CardFooter className="">
-                        <button className="btn">mehr erfahren</button>
-                      </CardFooter>
-                    </Card>
-                    <Card className="flex flex-col">
-                      <CardHeader>
-                        <CardTitle>
-                          Nebenwirkungen
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent className="flex-1">
-                        Erleada kann verschiedene Nebenwirkungen verursachen. Häufig sind Müdigkeit, Gelenkschmerzen, Hautausschlag, Bluthochdruck und Hitzewallungen. Auch Durchfall, Knochenbrüche, Stürze und Gewichtsverlust wurden berichtet. Seltener treten Muskelkrämpfe, Juckreiz und Geschmacksveränderungen auf. Ernsthafte Nebenwirkungen umfassen Krampfanfälle und Herzerkrankungen. Sprechen Sie immer mit Ihrem Arzt.
-                      </CardContent>
-                      <CardFooter>
-                        <button className="btn">mehr erfahren</button>
-                      </CardFooter>
-                    </Card>
+                    {!document.features && (
+                      <>
+                        <Card className="flex flex-col">
+                          <CardHeader>
+                            <CardTitle>
+                              {featureTitles[0]}
+                            </CardTitle>
+                          </CardHeader>
+                          <CardContent>
+                            <div className="flex flex-col gap-2">
+                              <Skeleton className="h-[20px]" />
+                              <Skeleton className="h-[20px]" />
+                              <Skeleton className="h-[20px]" />
+                            </div>
+                          </CardContent>
+                          <CardFooter>
+                            <Skeleton className="h-[20px]" />
+                          </CardFooter>
+                        </Card>
+                        <Card className="flex flex-col">
+                          <CardHeader>
+                            <CardTitle>
+                              {featureTitles[1]}
+                            </CardTitle>
+                          </CardHeader>
+                          <CardContent>
+                            <div className="flex flex-col gap-2">
+                              <Skeleton className="h-[20px]" />
+                              <Skeleton className="h-[20px]" />
+                              <Skeleton className="h-[20px]" />
+                            </div>
+                          </CardContent>
+                          <CardFooter>
+                            <Skeleton className="h-[20px]" />
+                          </CardFooter>
+                        </Card>
+                        <Card className="flex flex-col">
+                          <CardHeader>
+                            <CardTitle>
+                              {featureTitles[2]}
+                            </CardTitle>
+                          </CardHeader>
+                          <CardContent>
+                            <div className="flex flex-col gap-2">
+                              <Skeleton className="h-[20px]" />
+                              <Skeleton className="h-[20px]" />
+                              <Skeleton className="h-[20px]" />
+                            </div>
+                          </CardContent>
+                          <CardFooter>
+                            <Skeleton className="h-[20px]" />
+                          </CardFooter>
+                        </Card>
+                      </>
+                    )}
+                    {document.features && (
+                      document.features.map((feature, index) => (
+                        <Card className="flex flex-col" key={index}>
+                          <CardHeader>
+                            <CardTitle>
+                              {featureTitles[index]}
+                            </CardTitle>
+                          </CardHeader>
+                          <CardContent>
+                            <p>
+                              {feature}
+                            </p>
+                          </CardContent>
+                          <CardFooter>
+                            <button className="btn">mehr erfahren</button>
+                          </CardFooter>
+                        </Card>
+                      ))
+                    )}
                   </div>
                   <div className="flex flex-col gap-8">
                     <h2 className="text-2xl font-bold">

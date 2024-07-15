@@ -1,5 +1,6 @@
 import { defineSchema, defineTable } from "convex/server";
 import { v } from "convex/values";
+import { features } from "process";
 
 export default defineSchema({
   memberships: defineTable({
@@ -9,6 +10,8 @@ export default defineSchema({
   documents: defineTable({
     title: v.string(),
     description: v.optional(v.string()),
+    summary: v.optional(v.string()),
+    features: v.optional(v.array(v.string())),
     tokenIdentifier: v.optional(v.string()),
     orgId: v.optional(v.string()),
     embedding: v.optional(v.array(v.float64())),

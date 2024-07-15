@@ -18,25 +18,25 @@ import { api } from "@/convex/_generated/api";
 import { LoadingButton } from "@/components/loading-button";
 import { Id } from "@/convex/_generated/dataModel";
 import { useOrganization } from "@clerk/nextjs";
+import { updateDocumentFile } from "@/convex/documents";
 
 const formSchema = z.object({
-  title: z.string().min(1).max(250),
   file: z.instanceof(File),
 });
 
-export default function UploadDocumentForm({
+export default function UpdateDocumentForm({
   onUpload,
+  documentId,
 }: {
   onUpload: () => void;
+  documentId: Id<"documents">;
 }) {
-  const organization = useOrganization();
-  const createDocument = useMutation(api.documents.createDocument);
+  const updateDocumentFile = useMutation(api.documents.updateDocumentFile);
   const generateUploadUrl = useMutation(api.documents.generateUploadUrl);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      title: "",
     },
   });
 
@@ -50,30 +50,17 @@ export default function UploadDocumentForm({
     });
     const { storageId } = await result.json();
 
-    await createDocument({
-      title: values.title,
+    await updateDocumentFile({
+      documentId: documentId,
       fileId: storageId as Id<"_storage">,
-      orgId: organization.organization?.id,
     });
+
     onUpload();
   }
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <FormField
-          control={form.control}
-          name="title"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Titel des Produkts</FormLabel>
-              <FormControl>
-                <Input placeholder="Name" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
 
         <FormField
           control={form.control}
