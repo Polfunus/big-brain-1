@@ -10,6 +10,7 @@ import { DeleteDocumentButton } from "./delete-document-button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import UpdateDocumentButton from "../update-document-button";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function DocumentPage({
   params,
@@ -239,6 +240,191 @@ export default function DocumentPage({
                           <p className="font-bold">
                             Erleada bietet durch umfassende klinische Studien, detaillierte Testberichte und zahlreiche Sicherheitszertifikate maximale Sicherheit und Zuverlässigkeit für die Behandlung von Prostatakrebs.
                           </p>
+                        </CardFooter>
+                      </Card>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-8">
+                    <div>
+                      <h2 className="text-2xl font-bold">
+                        QKK
+                      </h2>
+                      <p>
+                        Achte im Verkaufsgespräch auf den Ablauf im QKK. Für jeden Schritt helfen dir die unten angegeben Argumente für Erleada.
+                      </p>
+                    </div>
+                    <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
+                      <Image
+                        src={"/QKK01_Frei.png"}
+                        alt="QKK01"
+                        width={400}
+                        height={400}
+                      />
+                      <Card className="flex flex-col">
+                        <CardHeader>
+                          <CardTitle>
+                            Schritt 1
+                          </CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                          <p>
+                            Hier stehen übersichtlich mit wenigen Wörtern der KI-generierte Content.Bei Bedarf kann auf einen Klick tiefer eingetaucht werden.
+                          </p>
+                        </CardContent>
+                        <CardFooter>
+                          <button>
+                            mehr erfahren
+                          </button>
+                        </CardFooter>
+                      </Card>
+                    </div>
+                    <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
+                      <Image
+                        src={"/QKK02_Frei.png"}
+                        alt="QKK01"
+                        width={400}
+                        height={400}
+                      />
+                      <Card className="flex flex-col">
+                        <CardHeader>
+                          <CardTitle>
+                            Schritt 2
+                          </CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                          <p>
+                            Hier stehen übersichtlich mit wenigen Wörtern der KI-generierte Content.Bei Bedarf kann auf einen Klick tiefer eingetaucht werden.
+                          </p>
+                        </CardContent>
+                        <CardFooter>
+                          <button>
+                            mehr erfahren
+                          </button>
+                        </CardFooter>
+                      </Card>
+                    </div>
+                    <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
+                      <Image
+                        src={"/QKK03_Frei.png"}
+                        alt="QKK01"
+                        width={400}
+                        height={400}
+                      />
+                      <Card className="flex flex-col">
+                        <CardHeader>
+                          <CardTitle>
+                            Schritt 3
+                          </CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                          <p>
+                            Hier stehen übersichtlich mit wenigen Wörtern der KI-generierte Content.Bei Bedarf kann auf einen Klick tiefer eingetaucht werden.
+                          </p>
+                        </CardContent>
+                        <CardFooter>
+                          <button>
+                            mehr erfahren
+                          </button>
+                        </CardFooter>
+                      </Card>
+                    </div>
+                    <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
+                      <Image
+                        src={"/QKK04_Frei.png"}
+                        alt="QKK01"
+                        width={400}
+                        height={400}
+                      />
+                      <Card className="flex flex-col">
+                        <CardHeader>
+                          <CardTitle>
+                            Schritt 4
+                          </CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                          <p>
+                            Hier stehen übersichtlich mit wenigen Wörtern der KI-generierte Content.Bei Bedarf kann auf einen Klick tiefer eingetaucht werden.
+                          </p>
+                        </CardContent>
+                        <CardFooter>
+                          <button>
+                            mehr erfahren
+                          </button>
+                        </CardFooter>
+                      </Card>
+                    </div>
+                    <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
+                      <Image
+                        src={"/QKK05_Frei.png"}
+                        alt="QKK01"
+                        width={400}
+                        height={400}
+                      />
+                      <Card className="flex flex-col">
+                        <CardHeader>
+                          <CardTitle>
+                            Schritt 5
+                          </CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                          <p>
+                            Hier stehen übersichtlich mit wenigen Wörtern der KI-generierte Content.Bei Bedarf kann auf einen Klick tiefer eingetaucht werden.
+                          </p>
+                        </CardContent>
+                        <CardFooter>
+                          <button>
+                            mehr erfahren
+                          </button>
+                        </CardFooter>
+                      </Card>
+                    </div>
+                    <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
+                      <Image
+                        src={"/QKK06_Frei.png"}
+                        alt="QKK01"
+                        width={400}
+                        height={400}
+                      />
+                      <Card className="flex flex-col">
+                        <CardHeader>
+                          <CardTitle>
+                            Schritt 6
+                          </CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                          <p>
+                            Hier stehen übersichtlich mit wenigen Wörtern der KI-generierte Content.Bei Bedarf kann auf einen Klick tiefer eingetaucht werden.
+                          </p>
+                        </CardContent>
+                        <CardFooter>
+                          <button>
+                            mehr erfahren
+                          </button>
+                        </CardFooter>
+                      </Card>
+                    </div>
+                    <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
+                      <Image
+                        src={"/QKK07_Frei.png"}
+                        alt="QKK01"
+                        width={400}
+                        height={400}
+                      />
+                      <Card className="flex flex-col">
+                        <CardHeader>
+                          <CardTitle>
+                            Schritt 7
+                          </CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                          <p>
+                            Hier stehen übersichtlich mit wenigen Wörtern der KI-generierte Content.Bei Bedarf kann auf einen Klick tiefer eingetaucht werden.
+                          </p>
+                        </CardContent>
+                        <CardFooter>
+                          <button>
+                            mehr erfahren
+                          </button>
                         </CardFooter>
                       </Card>
                     </div>
